@@ -1,0 +1,63 @@
+body
+{
+    background-image: url(./images/register_page.jpg);
+    background-size: cover;
+}
+
+.start
+{
+    background: none;
+}
+
+.header1
+{
+    font-family: "Monotype Corsiva";
+    font-size: 70px;
+    text-align: center;
+    color: darkblue; 
+    position: relative;
+    top: 30px;
+}
+
+.label
+{
+    font-family: "Quire Sans";
+    font-size: 30px;
+    color: rgb(34, 34, 119);
+    margin-bottom: 20px;
+    position: relative;
+    top: 50px;
+    left: 250px;
+}
+
+.textLabel
+{
+    font-family: "Times New Roman";
+    font-size: 25px;
+    color: black;
+    background: white;
+    width: 500px;
+    height: 40px;
+    margin-bottom: 20px;
+    position: relative;
+    top: 50px;
+    left: 250px;
+}
+
+.principal_button
+{
+    text-align: center;
+    font-family: "Quire Sans";
+    color: darkblue;
+    font-size: 35px;
+    background: rgba(65, 49, 207, 0.5);
+    border-radius: 20px;
+    width: 400px;
+    height: 100px;
+    border: 2px solid darkblue;
+    margin-bottom: 35px;
+    margin-left: 350px;
+    margin-right: 300px;
+    position: relative;
+    top: 60px;
+}
