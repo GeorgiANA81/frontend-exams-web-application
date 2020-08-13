@@ -1,88 +1,12 @@
-body
-{
-    background-image: url(./images/teacher_student_page.jpg);
-    opacity: 1.0;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
+.student-exams {
+    margin-top: -27px;
 }
-
-.start
-{
-    background: none;
-}
-
-.menu
-{
-    background-image: linear-gradient(to bottom right, white, rgb(183, 231, 187));
-    width: 200px;
-    height: 485px;
-    position: relative;
-    left: 925px;
-    border: 2px solid darkgreen;
-}
-
-.showExams
-{
-    background: none;
-    position: relative;
-    left: 500px;
-}
-
-.nextExams
-{
-    background: none;
-    position: relative;
-    left: 50px;
-}
-
-.buttonm
-{
-    font-family: "Quire Sans";
-    color: darkgreen;
-    background: none;
-    position: relative;
-    left: 30px;
-    top: 160px;
-}
-
-.buttond
-{
-    font-family: "Quire Sans";
-    color: darkgreen;
-    background: none;
-    position: relative;
-    left: 45px;
-    top: 170px;
-}
-
-.principal_button
-{
-    font-family: "Bembo";
-    color: darkgreen;
-    background: rgb(196, 228, 198);
-    height: 30px;
-    width: 150px;
-    position: relative;
-    left: 20px;
-    top: 90px;
-    margin-bottom: 40px;
-}
-
-.label
-{
-    font-family: "Broadway";
-    color: darkgreen;
-    text-align: center;
-    position: relative;
-    top: 80px;
-    left: 25px;
-}
-
-.labelu
-{
-     position: relative;
-     bottom: 100px;
-}
+/*.student-page {*/
+/*    background-image: url("./images/teacher_student_page.jpg");*/
+/*    opacity: 1.0;*/
+/*    height: 100%;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    width: 100%;*/
+/*}*/

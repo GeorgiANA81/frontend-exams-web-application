@@ -1,31 +1,36 @@
 import React, {Component} from 'react';
 import '../Register_page.css';
+import {NavLink} from "react-router-dom";
+import routes from "../routes";
 
 class RegisterPage extends Component {
     render() {
         return (
             <div className="start">
-                <h1 className="header1"> Înregistrare </h1>
+                <h1>Înregistrare</h1>
 
-                <label htmlFor="nume" className="label">Nume:</label>
-                <input type="text" id="nume" name="nume" className="textLabel"/><br/>
-
-                <label htmlFor="idutil" className="label">ID Utilizator:</label>
-                <input type="text" id="idutil" name="idutil" className="textLabel"/><br/>
-
-                <label htmlFor="email" className="label">E-mail:</label>
-                <input type="text" id="email" name="email" className="textLabel"/><br/>
-
-                <label htmlFor="parola" className="label">Parolă:</label>
-                <input type="password" id="parola" name="parola" className="textLabel"/><br/>
-
-                <input type="button" name="Confirmare"
-                       className="principal_button"
-                       value="Confirmare"/><br/>
-
-                <input type="button" name="Inapoi"
-                       className="principal_button"
-                       value="Înapoi"/><br/>
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="name">Nume</label>
+                        <input type="text" className="form-control" id="name" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="pubid">ID Utilizator</label>
+                        <input type="text" className="form-control" id="pubid" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">E-mail</label>
+                        <input type="email" className="form-control" id="email" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Parola</label>
+                        <input type="password" className="form-control" id="password" />
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <button type="submit" className="btn btn-primary">Confirmă</button>
+                        <NavLink to={routes.pages.home} className="btn btn-primary">Inapoi</NavLink>
+                    </div>
+                </form>
             </div>
         );
     }

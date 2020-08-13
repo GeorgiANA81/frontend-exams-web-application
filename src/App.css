@@ -1,2 +1,15 @@
-@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css)
+body {
+    display: flex !important;
 
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
