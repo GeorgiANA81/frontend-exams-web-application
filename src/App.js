@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRecoilState} from 'recoil'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
 
 import './App.css';
 
@@ -8,10 +8,36 @@ import {userAuth} from './user/api/state'
 import routes from "./routes";
 
 import HomePage from "./components/HomePage";
-import StudentPage from "./components/StudentPage";
 import TeacherPage from "./components/TeacherPage";
 import RegisterPage from "./components/RegisterPage";
 import LoginPage from "./components/LoginPage";
+import ListExam from "./components/ExamList";
+import AddExam from "./components/AddExam";
+import EditExam from "./components/EditExam";
+import DeleteExam from "./components/DeleteExam";
+import ChangePassword from "./components/ChangePassword";
+import Logout from "./components/Logout";
+
+const UserMenu = () => {
+    return (
+        <div className="col-4">
+            <button className={"btn btn-primary btn-block"}>Filtrare</button>
+            <hr/>
+            <h4>Examenele mele</h4>
+            <ul className={"list-group"}>
+                <li className="list-group-item"><NavLink to={routes.exams.list}>Listă examen</NavLink></li>
+                <li className="list-group-item"><NavLink to={routes.exams.add}>Adăugare examen</NavLink></li>
+                <li className="list-group-item"><NavLink to={routes.exams.delete}>Ștergere examen</NavLink></li>
+            </ul>
+            <hr/>
+            <div className="list-group">
+                <li className="list-group-item"><NavLink to={routes.user.change_password}>Modificare parolă</NavLink>
+                </li>
+                <li className="list-group-item"><NavLink to={routes.user.logout}>Deconectare</NavLink></li>
+            </div>
+        </div>
+    )
+}
 
 const App = () => {
     const [auth, setAuth] = useRecoilState(userAuth)
@@ -47,19 +73,32 @@ const App = () => {
 
     return (
         <Router>
-            <div className="container d-flex">
-                <Switch>
-                    {/* pages */}
-                    <Route path={routes.pages.home} component={HomePage} exact/>
-                    <Route path={routes.pages.register} component={RegisterPage}/>
-                    <Route path={routes.pages.login} component={LoginPage}/>
+            <div className="container">
+                <div className="row">
+                    <div className={auth.authenticated ? "col-8" : "col-12"}>
+                        <Switch>
+                            {/* pages */}
+                            <Route path={routes.pages.home} component={HomePage} exact/>
+                            <Route path={routes.pages.register} component={RegisterPage}/>
+                            <Route path={routes.pages.login} component={LoginPage}/>
 
-                    {/* student */}
-                    <Route path={routes.student.index} component={StudentPage}/>
+                            {/* teacher */}
+                            <Route path={routes.teacher.index} component={TeacherPage}/>
 
-                    {/* teacher */}
-                    <Route path={routes.teacher.index} component={TeacherPage}/>
-                </Switch>
+                            {/* exams */}
+                            <Route path={routes.exams.list} component={ListExam}/>
+                            <Route path={routes.exams.add} component={AddExam}/>
+                            <Route path={routes.exams.edit} component={EditExam}/>
+                            <Route path={routes.exams.delete} component={DeleteExam}/>
+
+                            {/* user */}
+                            <Route path={routes.user.change_password} component={ChangePassword}/>
+                            <Route path={routes.user.logout} component={Logout}/>
+                        </Switch>
+                    </div>
+
+                    {auth.authenticated ? <UserMenu/> : null}
+                </div>
             </div>
         </Router>
     );
