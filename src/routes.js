@@ -10,7 +10,7 @@ export default {
     exams: {
         list: '/examene',
         add: '/examen/adaugare',
-        edit: '/examen/modifica',
+        edit: '/examen/modifica/:id',
         delete: '/examen/sterge'
     },
     user: {

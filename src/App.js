@@ -27,7 +27,6 @@ const UserMenu = () => {
             <ul className={"list-group"}>
                 <li className="list-group-item"><NavLink to={routes.exams.list}>Listă examen</NavLink></li>
                 <li className="list-group-item"><NavLink to={routes.exams.add}>Adăugare examen</NavLink></li>
-                <li className="list-group-item"><NavLink to={routes.exams.delete}>Ștergere examen</NavLink></li>
             </ul>
             <hr/>
             <div className="list-group">

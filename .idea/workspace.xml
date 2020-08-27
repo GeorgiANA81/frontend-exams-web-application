@@ -19,23 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e21bdd44-bc93-44da-a66a-4d6020123f8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/AddExam.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ChangePassword.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DeleteExam.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EditExam.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ExamList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Logout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/httpclient.js" afterDir="false" />
+    <list default="true" id="e21bdd44-bc93-44da-a66a-4d6020123f8d" name="Default Changelist" comment="- added axios for api calls&#10;- added global axios client&#10;- jwt auth working&#10;- added api call for exams">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StudentPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddExam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddExam.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DeleteExam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DeleteExam.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditExam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditExam.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ExamList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExamList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/httpclient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpclient.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/user/api/exams.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/api/exams.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,17 +75,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -127,8 +109,19 @@
       <workItem from="1598188106854" duration="19000" />
       <workItem from="1598188133028" duration="3188000" />
       <workItem from="1598293311754" duration="5142000" />
-      <workItem from="1598380091174" duration="7938000" />
+      <workItem from="1598380091174" duration="12280000" />
+      <workItem from="1598557792281" duration="6369000" />
+      <workItem from="1598567488767" duration="89000" />
+      <workItem from="1598567672193" duration="1118000" />
     </task>
+    <task id="LOCAL-00001" summary="- added axios for api calls&#10;- added global axios client&#10;- jwt auth working&#10;- added api call for exams">
+      <created>1598389679327</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598389679327</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +139,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- added axios for api calls&#10;- added global axios client&#10;- jwt auth working&#10;- added api call for exams" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added axios for api calls&#10;- added global axios client&#10;- jwt auth working&#10;- added api call for exams" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1325" y="543" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598295229204">
       <screen x="0" y="45" width="2384" height="1395" />
@@ -159,26 +156,26 @@
       <screen x="0" y="45" width="1366" height="723" />
     </state>
     <state x="100" y="145" width="1166" height="523" key="DiffContextDialog/0.45.1366.723@0.45.1366.723" timestamp="1597171858381" />
-    <state width="1528" height="390" key="GridCell.Tab.0.bottom" timestamp="1598382409110">
+    <state width="1138" height="390" key="GridCell.Tab.0.bottom" timestamp="1598567582294">
       <screen x="0" y="45" width="2384" height="1395" />
     </state>
     <state width="1320" height="160" key="GridCell.Tab.0.bottom/0.45.1366.723@0.45.1366.723" timestamp="1597223818965" />
-    <state width="1528" height="390" key="GridCell.Tab.0.bottom/0.45.2384.1395@0.45.2384.1395" timestamp="1598382409110" />
-    <state width="1528" height="390" key="GridCell.Tab.0.center" timestamp="1598382409110">
+    <state width="1138" height="390" key="GridCell.Tab.0.bottom/0.45.2384.1395@0.45.2384.1395" timestamp="1598567582294" />
+    <state width="1138" height="390" key="GridCell.Tab.0.center" timestamp="1598567582294">
       <screen x="0" y="45" width="2384" height="1395" />
     </state>
     <state width="1320" height="160" key="GridCell.Tab.0.center/0.45.1366.723@0.45.1366.723" timestamp="1597223818964" />
-    <state width="1528" height="390" key="GridCell.Tab.0.center/0.45.2384.1395@0.45.2384.1395" timestamp="1598382409110" />
-    <state width="1528" height="390" key="GridCell.Tab.0.left" timestamp="1598382409110">
+    <state width="1138" height="390" key="GridCell.Tab.0.center/0.45.2384.1395@0.45.2384.1395" timestamp="1598567582294" />
+    <state width="1138" height="390" key="GridCell.Tab.0.left" timestamp="1598567582294">
       <screen x="0" y="45" width="2384" height="1395" />
     </state>
     <state width="1320" height="160" key="GridCell.Tab.0.left/0.45.1366.723@0.45.1366.723" timestamp="1597223818964" />
-    <state width="1528" height="390" key="GridCell.Tab.0.left/0.45.2384.1395@0.45.2384.1395" timestamp="1598382409110" />
-    <state width="1528" height="390" key="GridCell.Tab.0.right" timestamp="1598382409110">
+    <state width="1138" height="390" key="GridCell.Tab.0.left/0.45.2384.1395@0.45.2384.1395" timestamp="1598567582294" />
+    <state width="1138" height="390" key="GridCell.Tab.0.right" timestamp="1598567582294">
       <screen x="0" y="45" width="2384" height="1395" />
     </state>
     <state width="1320" height="160" key="GridCell.Tab.0.right/0.45.1366.723@0.45.1366.723" timestamp="1597223818964" />
-    <state width="1528" height="390" key="GridCell.Tab.0.right/0.45.2384.1395@0.45.2384.1395" timestamp="1598382409110" />
+    <state width="1138" height="390" key="GridCell.Tab.0.right/0.45.2384.1395@0.45.2384.1395" timestamp="1598567582294" />
     <state x="894" y="145" width="1382" height="1195" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598389483833">
       <screen x="0" y="45" width="2384" height="1395" />
     </state>
