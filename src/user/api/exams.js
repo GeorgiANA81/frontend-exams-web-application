@@ -5,7 +5,8 @@ export const examsList = selector({
     key: 'examsListSelector',
     get: async ({get}) => {
         try {
-            const response = await $axios.get('/api/exam/filter');
+            const params = JSON.parse(window.localStorage.getItem('exam_filter') || '{}')
+            const response = await $axios.get('/api/exam/filter', { params });
             const {data} = response;
             return data;
         } catch (error) {

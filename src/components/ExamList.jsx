@@ -1,33 +1,12 @@
 import React from "react";
 import {examDelete, examsList} from "../user/api/exams";
-import {useRecoilState, useRecoilValue} from "recoil";
+import {useRecoilValue} from "recoil";
 import {NavLink} from "react-router-dom";
 import $axios from "../httpclient";
 
-function replaceItemAtIndex(arr, index, newValue) {
-    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
-}
-
-function removeItemAtIndex(arr, index) {
-    return [...arr.slice(0, index), ...arr.slice(index + 1)];
-}
-
 const StudentExams = () => {
-    const [exams, setExams] = useRecoilState(examDelete)
+    const exams = useRecoilValue(examDelete)
     const data = useRecoilValue(examsList);
-
-    const isMarkedForDelete = examID => exams.findIndex(e => e.id === examID) > -1
-
-    const markForDelete = (event) => {
-        const examID = JSON.parse(event.target.dataset.exam)
-        const index = exams.findIndex((exam) => exam.id === examID.id);
-
-        if (-1 === index) {
-            setExams([...exams, examID])
-        } else {
-            setExams(removeItemAtIndex(exams, index))
-        }
-    }
 
     window.localStorage.setItem('exams_delete', JSON.stringify(exams))
 
@@ -37,8 +16,6 @@ const StudentExams = () => {
         $axios.delete(`/api/exam/${id}/delete`)
             .then(async r => {
                 alert("Examenul a fost sters cu succes!")
-
-                const { data } = await $axios.get('/api/exam/filter')
                 window.location.reload()
             })
             .catch(e => alert("Stergerea examenului a esuat."))
@@ -47,13 +24,6 @@ const StudentExams = () => {
     return (
         data.map((exam, index) => (
             <tr key={exam.id}>
-                <td>
-                    <input type={"checkbox"}
-                           checked={isMarkedForDelete(exam.id)}
-                           onChange={markForDelete}
-                           data-exam={JSON.stringify(exam)}
-                    />
-                </td>
                 <td>{exam.teacher}</td>
                 <td>{exam.academicYear}</td>
                 <td>{exam.course}</td>
@@ -67,18 +37,75 @@ const StudentExams = () => {
     );
 }
 
+class FilterForm extends React.Component {
+    constructor() {
+        super({});
+
+        this.state = {
+            filters: JSON.parse(window.localStorage.getItem('exam_filter') || '{}')
+        }
+
+
+        this.applyFilters = this.applyFilters.bind(this)
+        this.resetFilters = this.resetFilters.bind(this)
+        this.setFilter = this.setFilter.bind(this)
+    }
+
+    setFilter(event) {
+        const $el = event.target,
+            fn = $el.name,
+            fv = $el.value,
+            ft = $el.type
+
+        console.debug('FilterForm.setFilter', fn, ft, fv)
+
+        this.setState({
+            filters: {
+                ...this.state.filters,
+                [fn]: ft === 'number' ? parseInt(fv) : fv
+            }
+        })
+    }
+
+    applyFilters() {
+        window.localStorage.setItem('exam_filter', JSON.stringify(this.state.filters))
+        window.location.reload()
+    }
+    resetFilters() {
+        window.localStorage.removeItem('exam_filter')
+        window.location.reload()
+    }
+
+    render() {
+        return (
+            <tr>
+                <td><input onInput={this.setFilter} defaultValue={this.state.filters.teacher} className={"form-control"} type={"text"} name={"teacher"}/></td>
+                <td><input onInput={this.setFilter} defaultValue={this.state.filters.yearOfStudy} className={"form-control"} type={"number"} name={"yearOfStudy"}/></td>
+                <td><input onInput={this.setFilter} defaultValue={this.state.filters.subject} className={"form-control"} type={"text"} name={"subject"}/></td>
+                <td><input onInput={this.setFilter} defaultValue={this.state.filters.date} className={"form-control"} type={"text"} name={"date"}/></td>
+                <td>
+                    <button className={"btn btn-primary"} onClick={this.applyFilters}>Aplică</button>
+                    <button className={"btn btn-primary"} onClick={this.resetFilters}>Resetează</button>
+                </td>
+            </tr>
+        )
+    }
+}
+
 function ListExam() {
     return (
         <div className={"student-exams"}>
             <h1>Examenele urmatoare</h1>
-            <table className="table">
+            <table className="table bg-white">
                 <thead>
                 <tr>
                     <td>Profesor</td>
                     <td>An</td>
                     <td>Subiect</td>
                     <td>Data</td>
+                    <td>Acțiuni</td>
                 </tr>
+                <FilterForm/>
                 </thead>
                 <tbody>
                 <React.Suspense fallback={<tr>

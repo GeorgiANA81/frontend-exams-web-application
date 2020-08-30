@@ -1,5 +1,5 @@
 import React from 'react';
-import {useRecoilState} from 'recoil'
+import {useRecoilState, useRecoilValue} from 'recoil'
 import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
 
 import './App.css';
@@ -19,14 +19,16 @@ import ChangePassword from "./components/ChangePassword";
 import Logout from "./components/Logout";
 
 const UserMenu = () => {
+    const auth = useRecoilValue(userAuth)
+
+    const isTeacher = auth.user.roles.includes("ROLE_TEACHER")
+
     return (
         <div className="col-4">
-            <button className={"btn btn-primary btn-block"}>Filtrare</button>
-            <hr/>
             <h4>Examenele mele</h4>
             <ul className={"list-group"}>
                 <li className="list-group-item"><NavLink to={routes.exams.list}>Listă examen</NavLink></li>
-                <li className="list-group-item"><NavLink to={routes.exams.add}>Adăugare examen</NavLink></li>
+                {isTeacher ? <li className="list-group-item"><NavLink to={routes.exams.add}>Adăugare examen</NavLink></li> : ''}
             </ul>
             <hr/>
             <div className="list-group">
@@ -42,22 +44,25 @@ const App = () => {
     const [auth, setAuth] = useRecoilState(userAuth)
 
     // onLogout
-    const onLogout = () => {
-        setAuth({
-            authenticated: false,
-            user: null
-        })
-
-        // logoutUnset()
-
-        // history.push(routes.user.login)
-    }
+    // const onLogout = () => {
+    //     setAuth({
+    //         authenticated: false,
+    //         user: null
+    //     })
+    //
+    //     // logoutUnset()
+    //
+    //     // history.push(routes.user.login)
+    // }
 
     if (!auth.authenticated
-        && routes.pages.home !== window.location.pathname
-        && routes.pages.login !== window.location.pathname
-        && routes.pages.register !== window.location.pathname
+        && (
+            routes.pages.home !== window.location.pathname
+            && routes.pages.login !== window.location.pathname
+            && routes.pages.register !== window.location.pathname
+        )
     ) {
+        window.localStorage.clear()
         window.location.href = routes.pages.login
     }
 
