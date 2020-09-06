@@ -8,7 +8,8 @@ export default {
         index: '/teacher'
     },
     exams: {
-        list: '/examene',
+        filter: '/examene',
+        list: '/examene/listare',
         add: '/examen/adaugare',
         edit: '/examen/modifica/:id',
         delete: '/examen/sterge'

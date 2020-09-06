@@ -3,6 +3,7 @@ import {examDelete, examsList} from "../user/api/exams";
 import {useRecoilValue} from "recoil";
 import {NavLink} from "react-router-dom";
 import $axios from "../httpclient";
+import routes from "../routes";
 
 const StudentExams = () => {
     const exams = useRecoilValue(examDelete)
@@ -37,64 +38,15 @@ const StudentExams = () => {
     );
 }
 
-class FilterForm extends React.Component {
-    constructor() {
-        super({});
-
-        this.state = {
-            filters: JSON.parse(window.localStorage.getItem('exam_filter') || '{}')
-        }
-
-
-        this.applyFilters = this.applyFilters.bind(this)
-        this.resetFilters = this.resetFilters.bind(this)
-        this.setFilter = this.setFilter.bind(this)
-    }
-
-    setFilter(event) {
-        const $el = event.target,
-            fn = $el.name,
-            fv = $el.value,
-            ft = $el.type
-
-        console.debug('FilterForm.setFilter', fn, ft, fv)
-
-        this.setState({
-            filters: {
-                ...this.state.filters,
-                [fn]: ft === 'number' ? parseInt(fv) : fv
-            }
-        })
-    }
-
-    applyFilters() {
-        window.localStorage.setItem('exam_filter', JSON.stringify(this.state.filters))
-        window.location.reload()
-    }
-    resetFilters() {
-        window.localStorage.removeItem('exam_filter')
-        window.location.reload()
-    }
-
-    render() {
-        return (
-            <tr>
-                <td><input onInput={this.setFilter} defaultValue={this.state.filters.teacher} className={"form-control"} type={"text"} name={"teacher"}/></td>
-                <td><input onInput={this.setFilter} defaultValue={this.state.filters.yearOfStudy} className={"form-control"} type={"number"} name={"yearOfStudy"}/></td>
-                <td><input onInput={this.setFilter} defaultValue={this.state.filters.subject} className={"form-control"} type={"text"} name={"subject"}/></td>
-                <td><input onInput={this.setFilter} defaultValue={this.state.filters.date} className={"form-control"} type={"text"} name={"date"}/></td>
-                <td>
-                    <button className={"btn btn-primary"} onClick={this.applyFilters}>Aplică</button>
-                    <button className={"btn btn-primary"} onClick={this.resetFilters}>Resetează</button>
-                </td>
-            </tr>
-        )
-    }
+const resetFilters = () => {
+    window.localStorage.removeItem('exam_filter')
+    window.location.href = routes.exams.list
 }
 
 function ListExam() {
     return (
         <div className={"student-exams"}>
+            <button className={"btn btn-primary"} onClick={resetFilters}>Resetează filtre</button>
             <h1>Examenele urmatoare</h1>
             <table className="table bg-white">
                 <thead>
@@ -105,7 +57,6 @@ function ListExam() {
                     <td>Data</td>
                     <td>Acțiuni</td>
                 </tr>
-                <FilterForm/>
                 </thead>
                 <tbody>
                 <React.Suspense fallback={<tr>

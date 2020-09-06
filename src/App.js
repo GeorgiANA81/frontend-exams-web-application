@@ -17,6 +17,7 @@ import EditExam from "./components/EditExam";
 import DeleteExam from "./components/DeleteExam";
 import ChangePassword from "./components/ChangePassword";
 import Logout from "./components/Logout";
+import ExamFilter from "./components/ExamFilter";
 
 const UserMenu = () => {
     const auth = useRecoilValue(userAuth)
@@ -27,6 +28,7 @@ const UserMenu = () => {
         <div className="col-4">
             <h4>Examenele mele</h4>
             <ul className={"list-group"}>
+                <li className="list-group-item"><NavLink to={routes.exams.filter}>Filtre examene</NavLink></li>
                 <li className="list-group-item"><NavLink to={routes.exams.list}>Listă examen</NavLink></li>
                 {isTeacher ? <li className="list-group-item"><NavLink to={routes.exams.add}>Adăugare examen</NavLink></li> : ''}
             </ul>
@@ -90,6 +92,7 @@ const App = () => {
                             <Route path={routes.teacher.index} component={TeacherPage}/>
 
                             {/* exams */}
+                            <Route path={routes.exams.filter} component={ExamFilter} exact/>
                             <Route path={routes.exams.list} component={ListExam}/>
                             <Route path={routes.exams.add} component={AddExam}/>
                             <Route path={routes.exams.edit} component={EditExam}/>
