@@ -1,9 +1,4 @@
-body {
-    background-image: url("./images/home_page_exams.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
+
 
 .start {
     display: flex;
